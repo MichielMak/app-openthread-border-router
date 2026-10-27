@@ -1,10 +1,10 @@
 ---
-version: 3.3.0
+version: dev
 breaking_versions: [3.0.0]
 slug: openthread_border_router
 name: OpenThread Border Router
 description: OpenThread Border Router app
-url: >-
+url: https://github.com/home-assistant/app-openthread-border-router
   https://github.com/home-assistant/addons/tree/master/openthread_border_router
 arch:
   - aarch64
@@ -14,8 +14,6 @@ gpio: true
 hassio_api: true
 discovery:
   - otbr
-# IPC is only used within the Add-on
-host_ipc: false
 host_network: true
 host_uts: true
 privileged:
@@ -24,7 +22,7 @@ privileged:
   - NET_RAW
 devices:
   - /dev/net/tun
-image: homeassistant/{arch}-addon-otbr
+image: ghcr.io/home-assistant/app-openthread-border-router
 init: false
 options:
   device: null

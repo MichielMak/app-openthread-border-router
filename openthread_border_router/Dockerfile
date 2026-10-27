@@ -1,10 +1,10 @@
-ARG BUILD_FROM
+ARG BUILD_FROM=ghcr.io/home-assistant/base-debian:trixie
 
 # OTBR builder stage (beta)
 FROM ${BUILD_FROM} AS otbr-beta-builder
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-ARG OTBR_BETA_VERSION
+ARG OTBR_BETA_VERSION=cb4bdae242b22287cded07ae3aa10347c2d16d9b
 
 ENV BORDER_ROUTING=1
 ENV BACKBONE_ROUTER=1
@@ -89,7 +89,7 @@ RUN \
 FROM ${BUILD_FROM} AS otbr-stable-builder
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-ARG OTBR_VERSION
+ARG OTBR_VERSION=fd872ab9d4afdfaf034b3b1154fed08b8b6d1e43
 
 ENV BORDER_ROUTING=1
 ENV BACKBONE_ROUTER=1
@@ -172,8 +172,8 @@ RUN \
 FROM ${BUILD_FROM}
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-ARG SERIALX_VERSION
-ARG UNIVERSAL_SILABS_FLASHER_VERSION
+ARG SERIALX_VERSION=1.8.0
+ARG UNIVERSAL_SILABS_FLASHER_VERSION=0.1.2
 
 # Install runtime dependencies
 RUN \
@@ -209,3 +209,9 @@ COPY rootfs /
 
 ENV \
     S6_STAGE2_HOOK=/etc/s6-overlay/scripts/enable-check.sh
+
+LABEL \
+    org.opencontainers.image.title="Home Assistant App: OpenThread Border Router" \
+    org.opencontainers.image.description="OpenThread Border Router app" \
+    org.opencontainers.image.source="https://github.com/home-assistant/app-openthread-border-router" \
+    org.opencontainers.image.licenses="Apache License 2.0"
