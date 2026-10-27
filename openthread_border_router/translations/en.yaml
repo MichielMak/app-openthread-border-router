@@ -2,7 +2,9 @@
 configuration:
   device:
     name: Device
-    description: The serial port where the OpenThread RCP radio is attached.
+    description: >-
+      The serial port where the OpenThread RCP radio is attached. Not needed
+      when using a network device.
   baudrate:
     name: Baudrate
     description: >-

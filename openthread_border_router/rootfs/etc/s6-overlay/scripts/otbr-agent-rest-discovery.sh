@@ -4,11 +4,16 @@
 # Send OTBR discovery information to Home Assistant
 # ==============================================================================
 declare config
+declare device="^null"
+
+if bashio::config.has_value 'device'; then
+    device=$(bashio::config 'device')
+fi
 
 config=$(bashio::var.json \
     host "$(bashio::addon.hostname)" \
     port "^8081" \
-    device "$(bashio::config 'device')" \
+    device "${device}" \
     firmware "$(ot-ctl rcp version | head -n 1)" \
 )
 

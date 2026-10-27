@@ -62,7 +62,7 @@ App configuration:
 
 | Configuration      | Description                                                                       |
 | ------------------ | --------------------------------------------------------------------------------- |
-| device (mandatory) | Serial port where the OpenThread RCP Radio is attached                            |
+| device             | Serial port of the OpenThread RCP Radio (not needed with network_device)          |
 | baudrate           | Serial port baudrate (depends on firmware)                                        |
 | flow_control       | If hardware flow control should be enabled (depends on firmware)                  |
 | otbr_log_level     | Set the log level of the OpenThread BorderRouter Agent                            |
@@ -86,7 +86,7 @@ App configuration:
 > recommended.
 
 > [!NOTE]
-> When using a network device, you still need to set a dummy serial port device, e.g. `/dev/ttyS3`.
+> When using a network device, you can leave `device` empty.
 
 ## Support
 
